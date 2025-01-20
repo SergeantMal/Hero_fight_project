@@ -5,6 +5,8 @@
 import random
 import math
 
+# Класс Hero представляет героя в игре.
+
 class Hero:
     def __init__(self, name):
         self.name = name
@@ -21,6 +23,8 @@ class Hero:
     def is_alive(self):
         return self.health > 0
 
+# Класс Game представляет игру.
+
 class Game:
     def __init__(self, player: Hero, computer: Hero):
         self.hero = player
@@ -35,8 +39,14 @@ class Game:
         else:
             print(f"Победил {self.monster.name}!")
 
+
+# Инициализация игры
+# Создание героев
+
 player = Hero("Сергей")
 computer = Hero("Монстр")
+
+# Запуск игры
 
 game = Game(player, computer)
 game.start()
