@@ -26,7 +26,7 @@ class Game:
         self.hero = player
         self.monster = computer
 
-    def run(self):
+    def start(self):
         while self.hero.is_alive() and self.monster.is_alive():
             self.hero.attack(self.monster)
             self.monster.attack(self.hero)
@@ -39,4 +39,4 @@ player = Hero("Сергей")
 computer = Hero("Монстр")
 
 game = Game(player, computer)
-game.run()
+game.start()
