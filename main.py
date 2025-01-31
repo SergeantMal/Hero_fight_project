@@ -12,13 +12,23 @@ class Hero:
         self.name = name
         self.health = 100
         self.attack_power = 20
+        self.defense = 5  # Новая характеристика защиты
+        self.dodge_chance = 0.1  # Шанс уклонения
 
     def attack(self, target):
-        self.power_coefficient = random.uniform(0.8, 1.2) # Добавлен коэффициент урона, для случайности урона
-        power = math.ceil(self.attack_power * self.power_coefficient)
+        if random.random() < target.dodge_chance:
+            print(f"{target.name} уклоняется от атаки {self.name}.")
+            return
+        self.power_coefficient = random.uniform(0.8, 1.2)
+        power = math.ceil(self.attack_power * self.power_coefficient - target.defense)
+        if power < 0:
+            power = 0
         target.health -= power
         print(f"{self.name} атакует {target.name} и наносит {power} урона.")
         print(f'Здоровье {target.name}: {target.health}')
+
+    def is_alive(self):
+        return self.health > 0
 
     def is_alive(self):
         return self.health > 0
