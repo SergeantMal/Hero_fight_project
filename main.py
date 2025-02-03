@@ -16,9 +16,12 @@ class Hero:
         self.dodge_chance = 0.1  # Шанс уклонения
 
     def attack(self, target):
-        if random.random() < target.dodge_chance:
+        chance = random.random()
+        if chance < target.dodge_chance: #шанс уклониться
             print(f"{target.name} уклоняется от атаки {self.name}.")
             return
+        elif chance <= 0.2: #шанс вылечиться
+            self.use_special_ability(self)
         self.power_coefficient = random.uniform(0.8, 1.2)
         power = math.ceil(self.attack_power * self.power_coefficient - target.defense)
         if power < 0:
@@ -33,7 +36,7 @@ class Hero:
     def is_alive(self):
         return self.health > 0
 
-    def use_special_ability(self, target):
+    def use_special_ability(self, target):  #Лечение героя
         # Пример способности: восстановление здоровья
         self.health += 20
         print(f"{self.name} использует способность восстановления здоровья! Он восстанавливает 20 здоровья.")
