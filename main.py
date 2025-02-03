@@ -40,6 +40,12 @@ class Hero:
     def is_alive(self):
         return self.health > 0
 
+    def use_special_ability(self, target):
+        # Пример способности: восстановление здоровья
+        self.health += 20
+        print(f"{self.name} использует способность восстановления здоровья! Он восстанавливает 20 здоровья.")
+
+
 # Класс Game представляет игру.
 
 class Game:
