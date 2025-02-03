@@ -13,12 +13,9 @@ class Hero:
         self.health = 100
         self.attack_power = 20
         self.defense = 5  # Новая характеристика защиты
-        self.dodge_chance = 0.1  # Шанс уклонения
+        
 
     def attack(self, target):
-        if random.random() < target.dodge_chance:
-            print(f"{target.name} уклоняется от атаки {self.name}.")
-            return
 
         # Проверка на критический удар (например, 10% шанс)
         critical_hit = random.random() < 0.1  # 10% шанс на критический удар
