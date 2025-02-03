@@ -13,16 +13,23 @@ class Hero:
         self.health = 100
         self.attack_power = 20
         self.defense = 5  # Новая характеристика защиты
-        self.dodge_chance = 0.1  # Шанс уклонения
+        
 
     def attack(self, target):
-        if random.random() < target.dodge_chance:
-            print(f"{target.name} уклоняется от атаки {self.name}.")
-            return
+
+        # Проверка на критический удар (например, 10% шанс)
+        critical_hit = random.random() < 0.1  # 10% шанс на критический удар
+
         self.power_coefficient = random.uniform(0.8, 1.2)
         power = math.ceil(self.attack_power * self.power_coefficient - target.defense)
+
+        if critical_hit:  # Увеличиваем урон в два раза для критического удара
+            power *= 2
+            print(f"Критический удар!")
+
         if power < 0:
             power = 0
+
         target.health -= power
         print(f"{self.name} атакует {target.name} и наносит {power} урона.")
         print(f'Здоровье {target.name}: {target.health}')
